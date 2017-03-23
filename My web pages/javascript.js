@@ -87,6 +87,30 @@ lick.onclick = function() {
   console.log("Should be showing");
   drop();
 };
+}
+/*var picture= document.getElementById('pic'),
+    intervalHandle,
+    currentPosition = 0,
+    downPosition = 0;
+    function beginAnimate () {
+      picture.style.position = 'absolute';
+      picture.style.left = '0px';
+      picture.style.top = '200px';
+      intervalHandle = setInterval(animateBox,20);
+    }
+    function animateBox() {
+      currentPosition += 2;
+      downPosition += 1;
+      picture.style.left = currentPosition + 'px';
+      picture.style.top = downPosition + 'px';
+      if (currentPosition > 1450) {
+        clearInterval(intervalHandle);
+         picture.style.position = '';
+      picture.style.left = '';
+      picture.style.top = '';
+        
+      }*/
+    
 /*var lastName =document.getElementById('torahform').addEventListener('submit', action);
 function action(event){
   event.preventDefault();
@@ -96,4 +120,5 @@ function action(event){
 }
 window.onload = function() {
   totalWrap();
+  /*setTimeout(beginAnimate,4000);*/
 };

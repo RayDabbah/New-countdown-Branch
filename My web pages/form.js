@@ -1,6 +1,6 @@
 function totalWrap(){}
 var thin=document.getElementById("dropdown");
-function drop () {
+function drop() {
   thin.classList.toggle("show");
 }
 var lick=document.getElementById("button");
@@ -103,7 +103,69 @@ function hideCheckBox() {
   }
 }
 reveal.addEventListener('click',hideCheckBox);
-
+    
+    var picture= document.getElementById('pic'),
+    intervalHandle,
+    currentPosition = 0,
+    downPosition = 0;
+    function beginAnimate () {
+      picture.style.position = 'absolute';
+      picture.style.left = '0px';
+      picture.style.top = '200px';
+      intervalHandle = setInterval(animateBox,0);
+    }
+   
+    function animateBox() {
+      currentPosition += 2;
+      downPosition += 1;
+      picture.style.left = currentPosition + 'px';
+      picture.style.top = downPosition + 'px';
+      if (currentPosition > 999) {
+       /* clearInterval(intervalHandle);
+         picture.style.position = '';
+      picture.style.left = '';
+      picture.style.top = '';*/
+      setInterval(reverseAnimate, 20);
+      }
+       function reverseAnimate(){
+      currentPosition -= 2;
+      downPosition = 0;
+       picture.style.left = currentPosition + 'px';
+      picture.style.top = downPosition + 'px';
+      }
+       if (currentPosition < 0) {
+        beginAnimate();
+    }
+      
+  	var c = document.getElementById('current-time');
+	var d = new Date();
+	var hours = d.getHours(),
+	date= d.toDateString().split(' ');
+	ampm = 'AM';
+		if (hours > 12) {
+			hours -= 12;
+			ampm = 'PM';
+		}
+	if (hours === 12) {
+			ampm = 'PM';
+	} if (hours===0){
+		hours=12;
+		ampm='AM';
+	}
+		
+		var sep,
+		sec= '0' +d.getTime(),
+		foo=sec.substr(11),
+		sepClass = '';
+		if (foo >=500) {sepClass = 'trans';}
+		 else {sepClass = '';}/* console.log(foo);*/
+		
+		sep = '<span id="' + sepClass + '">:</span>';
+		c.innerHTML = date[1]+ ' ' + date[2] + '<br><br>' + hours + sep + ('0' + d.getMinutes()).substr(-2) + ' ' + ampm;
+	}	
+    
+    
 window.onload=function(){
   totalWrap();
+   setTimeout(beginAnimate,2000);
 };

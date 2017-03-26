@@ -112,7 +112,8 @@ reveal.addEventListener('click',hideCheckBox);
       picture.style.position = 'absolute';
       picture.style.left = '0px';
       picture.style.top = '200px';
-      intervalHandle = setInterval(animateBox,0);
+      console.log(currentPosition);
+      intervalHandle = setInterval(animateBox, 10);
     }
    
     function animateBox() {
@@ -120,7 +121,7 @@ reveal.addEventListener('click',hideCheckBox);
       downPosition += 1;
       picture.style.left = currentPosition + 'px';
       picture.style.top = downPosition + 'px';
-      if (currentPosition > 999) {
+      if (currentPosition > 1000) {
        /* clearInterval(intervalHandle);
          picture.style.position = '';
       picture.style.left = '';
@@ -132,11 +133,12 @@ reveal.addEventListener('click',hideCheckBox);
       downPosition = 0;
        picture.style.left = currentPosition + 'px';
       picture.style.top = downPosition + 'px';
-      }
+      console.log(currentPosition);
        if (currentPosition < 0) {
-        beginAnimate();
+        animateBox();
     }
-      
+       }
+     console.log(currentPosition); 
   	var c = document.getElementById('current-time');
 	var d = new Date();
 	var hours = d.getHours(),

@@ -7,13 +7,17 @@ var lick=document.getElementById("button");
 lick.onclick = function() {
   drop();
 };          
-/*window.onclick= function(event) {
-  if (!event.target.matches('lick')){
-   //if (thin.classList.contains('show')) {
+window.onclick= function(event) {
+  if (!event.target.matches('.button')){
+        var dropdowns = document.getElementsByClassName("dropdown");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+ 
+   if (thin.classList.contains('show')) {
       thin.classList.remove('show');
    }
- // }
-};*/
+  }
+} };
 var first= document.getElementById('first'),
 last= document.getElementById('last'),
 pass= document.getElementById('password'),
@@ -105,7 +109,32 @@ function hideCheckBox() {
 reveal.addEventListener('click',hideCheckBox);
     
     var picture= document.getElementById('pic'),
-    intervalHandle,
+    leftPosition = 0,
+    goRight = true;
+    picture.style.position = 'fixed';
+    picture.style.top = '175px';
+     
+function setPosition (left) {
+ leftPosition += left;
+ picture.style.left = leftPosition + 'px';
+}
+function animate () {
+ if (leftPosition > 1000) {
+   goRight = false;
+ }
+ if (leftPosition < -300) {
+   goRight = true;
+   }
+   return goRight ? setPosition(2) : setPosition(-2);
+ }
+var int = setInterval(animate, 15);
+picture.addEventListener('click', function() {
+  clearInterval(int);
+});
+     
+    
+   /*var intervalHandle,
+    intervalHandle2,
     currentPosition = 0,
     downPosition = 0;
     function beginAnimate () {
@@ -115,18 +144,15 @@ reveal.addEventListener('click',hideCheckBox);
       console.log(currentPosition);
       intervalHandle = setInterval(animateBox, 10);
     }
-   
+
     function animateBox() {
       currentPosition += 2;
       downPosition += 1;
       picture.style.left = currentPosition + 'px';
       picture.style.top = downPosition + 'px';
       if (currentPosition > 1000) {
-       /* clearInterval(intervalHandle);
-         picture.style.position = '';
-      picture.style.left = '';
-      picture.style.top = '';*/
-      setInterval(reverseAnimate, 20);
+       clearInterval(intervalHandle);
+     intervalHandle2 = setInterval(reverseAnimate, 20);
       }
        function reverseAnimate(){
       currentPosition -= 2;
@@ -135,11 +161,13 @@ reveal.addEventListener('click',hideCheckBox);
       picture.style.top = downPosition + 'px';
       console.log(currentPosition);
        if (currentPosition < 0) {
-        animateBox();
+         clearInterval(intervalHandle2);
+        beginAnimate();
     }
        }
-     console.log(currentPosition); 
-  	var c = document.getElementById('current-time');
+     console.log(currentPosition); */
+  function clock() {
+    var c = document.getElementById('current-time');
 	var d = new Date();
 	var hours = d.getHours(),
 	date= d.toDateString().split(' ');
@@ -160,14 +188,15 @@ reveal.addEventListener('click',hideCheckBox);
 		foo=sec.substr(11),
 		sepClass = '';
 		if (foo >=500) {sepClass = 'trans';}
-		 else {sepClass = '';}/* console.log(foo);*/
+		 else {sepClass = '';}// console.log(foo);
 		
 		sep = '<span id="' + sepClass + '">:</span>';
 		c.innerHTML = date[1]+ ' ' + date[2] + '<br><br>' + hours + sep + ('0' + d.getMinutes()).substr(-2) + ' ' + ampm;
-	}	
+	}
+  setInterval(clock, 500);
     
     
-window.onload=function(){
+/*window.onload = function(){
   totalWrap();
-   setTimeout(beginAnimate,2000);
-};
+  setTimeout(beginAnimate,2000);
+};*/

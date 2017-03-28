@@ -117,7 +117,7 @@ function action(event){
   console.log("You just submitted this form!"); 
 }*/
 
-}
+
 window.onload = function() {
   totalWrap();
   /*setTimeout(beginAnimate,4000);*/

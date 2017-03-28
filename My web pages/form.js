@@ -34,15 +34,7 @@ function action(event){
 document.getElementById('torahform').addEventListener('change', figure);
 document.getElementById('torahform').addEventListener('input', figure);
 function figure(){
-  var myRE=/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-var total = parseInt(cd + mp3 +flash);
-  if (first.value=== '' || last.value=== '' || pass.value === '' || email.value  === '' || myRE.test(email.value) === false || total === 0) {
-  est.disabled=true;
-} else {
-  est.disabled= false;
-}
-console.log(total);
-  var cd= parseInt(document.getElementById('cd').value, 10) || 0,
+   var cd= parseInt(document.getElementById('cd').value, 10) || 0,
       flash=parseInt(document.getElementById('flash').value, 10) || 0,
       mp3=parseInt(document.getElementById('mp3').value, 10) || 0,
       state=document.getElementById('state').value,
@@ -52,7 +44,15 @@ console.log(total);
       taxRate,
       price=document.getElementById('estimate');
       sub= document.getElementById('sub');
-      
+  var myRE=/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+var total = parseInt(cd + mp3 +flash);
+  if (first.value=== '' || last.value=== '' || pass.value === '' || email.value  === '' || myRE.test(email.value) === false || total === 0) {
+  est.disabled=true;
+} else {
+  est.disabled= false;
+}
+console.log(total);
+     
    
      
       if (state==='NJ') {

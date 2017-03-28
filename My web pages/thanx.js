@@ -10,7 +10,7 @@ function setPosition(left) {
     pix.style.left = leftPosition + 'px';
 }
 function animateLeft ()  {
-    if (leftPosition > 1100) {
+    if (leftPosition > 920) {
         goRight = false;
     }
     if (leftPosition < -250) {
@@ -23,7 +23,7 @@ function upAndDown (upDown) {
 pix.style.top = topPosition + 'px';
 }
 function animateUpDown () {
-    if (topPosition < 75) {
+    if (topPosition < 20) {
         goDown = false;
     }
     if (topPosition > 401) {

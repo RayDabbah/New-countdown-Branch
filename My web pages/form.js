@@ -1,4 +1,4 @@
-function totalWrap(){}
+//function totalWrap(){}
 var thin=document.getElementById("dropdown");
 function drop() {
   thin.classList.toggle("show");
@@ -21,6 +21,7 @@ window.onclick= function(event) {
 var first= document.getElementById('first'),
 last= document.getElementById('last'),
 pass= document.getElementById('password'),
+email = document.getElementById('email'),
 
 est= document.getElementById('est');
  est.disabled = true;
@@ -33,11 +34,14 @@ function action(event){
 document.getElementById('torahform').addEventListener('change', figure);
 document.getElementById('torahform').addEventListener('input', figure);
 function figure(){
-  if (first.value=== '' || last.value=== '' || pass.value === '') {
+  var myRE=/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+var total = parseInt(cd + mp3 +flash);
+  if (first.value=== '' || last.value=== '' || pass.value === '' || email.value  === '' || myRE.test(email.value) === false || total === 0) {
   est.disabled=true;
 } else {
   est.disabled= false;
-}   
+}
+console.log(total);
   var cd= parseInt(document.getElementById('cd').value, 10) || 0,
       flash=parseInt(document.getElementById('flash').value, 10) || 0,
       mp3=parseInt(document.getElementById('mp3').value, 10) || 0,

@@ -254,7 +254,7 @@ table {
         font-size: 2rem;
               }
     
-    input[type=text],input[type=password], select {
+    input[type=text],input[type=password],input[type=email], select {
              border: none;
              width: 250px;
              height: 25px;

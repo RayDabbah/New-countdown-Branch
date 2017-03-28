@@ -85,7 +85,7 @@
                 <a href="https://www.merriam-webster.com/dictionary/grouch">Grouch</a>
             </div>
     </div>
-<form action="#" method="post">
+<form action="#" method="post" id="form">
     <fieldset>
     <legend>Personal info:</legend>
   Name: <br> <input type="text" name="first"/><br><br>
@@ -93,10 +93,10 @@
   DOB: <br> <input type="date" name="dob"/><br/><br/>
   Age: <br><input type="number" name="Age" min="0" max="126"><br/><br/>
   Time:  <br><input type="time" name="time"/><br/><br/>
-  Email: <br><input type="email" name="email" required="Please learn to type"/><br/><br/>
+  Email: <br><input type="email" name="email" id="email" required="Please learn to type"/><br/><br/>
   Telephone:<br><input type="tel" name="tel"/><br/><br/>
   Comment: <br><input type="text" name="comment" required minlength="3" maxlength="12"/><br/><br/>
-  <input type="submit" name="q" value="send"/>
+  <input type="submit" id="submit" name="q" value="send"/>
   
         Pick your favorite food! <sub><sup>(Chooose all that apply)</sup></sub><br>
         <select name="food">
@@ -112,6 +112,20 @@
         
         </fieldset>
     </form>
-
+<script>
+document.getElementById('email').addEventListener('input', eDisable);
+function eDisable(){
+var myRE=/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/, 
+submit = document.getElementById('submit'),
+email = document.getElementById('email').value;
+if (myRE.test(email) === true) {
+    submit.disabled= false;
+} else {
+    submit.disabled = true;
+}
+console.log(myRE.exec(email));
+console.log('button: ' + submit.disabled);
+}
+</script>
 </body>
 </html>

@@ -185,6 +185,7 @@ p {
         width: 222px; height: 237px;
         margin-left: auto;
         margin-right: auto;
+        z-index: -1;
         }
 footer  {
     text-align: center;
@@ -341,8 +342,8 @@ table {
         40% {background-color: #123456; top: 200px; left: 257px;}
         50% {background-color: #891ff5; top: 241px; left: 237px;}
         60% {background-color: #123456; top: 200px; left: 187px;}
-        70% {background-color: #123456; top: 181px; left: 157px;}
-        80% {background-color: #243aab; top: 141px; left: 167px;}
+        70% {background-color: #123456; top: 181px; left: 107px;}
+        80% {background-color: #243aab; top: 141px; left: 147px;}
         90% {background-color: #123456; top: 121px; left: 187px;}
         100% {background-color: #fedb22; top: 100px; left: 200px;}
     }
@@ -355,6 +356,7 @@ table {
         animation-iteration-count: 1;
         margin: auto 45%;
         border: red solid 1px;
+        z-index: 1;
     }
     #trans  {
         color: transparent;

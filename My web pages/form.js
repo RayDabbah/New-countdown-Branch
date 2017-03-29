@@ -4,20 +4,17 @@ function drop() {
   thin.classList.toggle("show");
 }
 var lick=document.getElementById("button");
-lick.onclick = function() {
+/*lick.onclick = function() {
   drop();
-};          
-window.onclick= function(event) {
-  if (!event.target.matches('.button')){
-        var dropdowns = document.getElementsByClassName("dropdown");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
- 
-   if (thin.classList.contains('show')) {
+};  */        
+window.addEventListener('click', function(event) {
+  if (event.target === ('button')) {
+    thin.classList.toggle('show');
+  }    else {
       thin.classList.remove('show');
    }
-  }
-} };
+   console.log(event.target);
+  });
 var first= document.getElementById('first'),
 last= document.getElementById('last'),
 pass= document.getElementById('password'),

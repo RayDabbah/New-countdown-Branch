@@ -333,9 +333,28 @@ table {
     #pic{
         margin: auto 20%;
     }
+    @keyframes example {
+        0% {background-color: #f89fdc; top: 100px; left: 200px;}
+        10% {background-color: #123456; top: 121px; left: 237px;}
+        20% {background-color: #123456; top: 141px; left: 257px;}
+        30% {background-color: #abcdef; top: 181px; left: 307px;}
+        40% {background-color: #123456; top: 200px; left: 257px;}
+        50% {background-color: #891ff5; top: 241px; left: 237px;}
+        60% {background-color: #123456; top: 200px; left: 187px;}
+        70% {background-color: #123456; top: 181px; left: 157px;}
+        80% {background-color: #243aab; top: 141px; left: 167px;}
+        90% {background-color: #123456; top: 121px; left: 187px;}
+        100% {background-color: #fedb22; top: 100px; left: 200px;}
+    }
     #current-time {
-        
+        background-color: #fedb22;
+        position: relative;
+        animation-name: example;
+        animation-duration: 8s;
+        animation-delay: 1s;
+        animation-iteration-count: 1;
         margin: auto 45%;
+        border: red solid 1px;
     }
     #trans  {
         color: transparent;

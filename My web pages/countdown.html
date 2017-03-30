@@ -45,18 +45,19 @@
     
     function countdown() {
     begin = document.getElementById('begin').value;
+    secLeft = begin * 60;
     setInterval(ticking, 1000);
-    
+
    //+ '<span id=' + sep  + '>:</span>' + secLeft;
    // console.log('Seconds: ' +secLeft + 'start value: ' + begin + ' minutes: ' + minLeft);
     }
     function ticking() {
-     var secLeft = begin * 60;
+     
      minLeft = Math.floor(secLeft /60);
-     var secOutput = minLeft * 60 - minLeft;
-     secLeft--;
+     var secOutput = (secLeft/minLeft %60);
        tick.innerHTML = minLeft + ':' + secOutput;
-       console.log('Seconds ' + secLeft + 'minutes: ' + minLeft + 'output: ' + secOutput);
+       secLeft = secLeft -1;
+       console.log('Seconds ' + secLeft + ' minutes: ' + minLeft + ' output: ' + secOutput);
     }
     button.addEventListener('click', function(){
         countdown();

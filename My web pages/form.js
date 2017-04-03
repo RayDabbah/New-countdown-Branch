@@ -18,7 +18,6 @@ lick.onclick = function() {
 var first= document.getElementById('first'),
 last= document.getElementById('last'),
 pass= document.getElementById('password'),
-email = document.getElementById('email'),
 
 est= document.getElementById('est');
  est.disabled = true;

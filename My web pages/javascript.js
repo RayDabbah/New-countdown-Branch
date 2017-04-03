@@ -74,7 +74,10 @@ feet.onclick= function() {
   im.setAttribute("src","images/sefarim.jpg");
   feet.appendChild(im);
 };
-
+//jQuery accordion 
+(function() {
+  $("#accordion").accordion();
+})();
 //Dropdown
 
 var thin=document.getElementById("dropdown");

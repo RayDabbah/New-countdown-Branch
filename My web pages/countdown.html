@@ -2,11 +2,20 @@
 
 <html>
 <head>
-    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <title>שעון ביטול זמן</title>
 </head>
 <style>
     * {
         background-color: #97D897;
+    }
+    input[type=number] {
+        width: 50px;
+        height: 50px;
+        background-color: #ddd;
+        margin-left: 20%;
+        color: #151612;
+        font-size: 2em;
     }
     h1{
         text-align: center;
@@ -40,73 +49,82 @@
 </style>
 <body>
 <h1>Enter time and click Start to start the countdown clock.</h1>
-<div id="inputarea"><button id="button">Start</button> <input type="number" id="begin" min="0"><br>
+<div id="inputarea"><button id="button">Start</button> &nbsp <span id="startstop"><button id="pause">Pause</button></span> &nbsp
+<button id="rest">Reset</button> <br><br>
+<input type="number" id="begin" min="0"><br>
 <p id="enternumber"></p></div>
 <div><h1 id="tick">00:00</h1></div>
 
 <script>
-    function totalWrap() {
- var input = document.getElementById('inputarea').innerHTML,
-    begin,
-  //  required = document.getElementById('enternumber'),
-    sep = document.getElementById('sep'),
-    button = document.getElementById('button'),
-      secLeft; 
-    var tick = document.getElementById('tick');
-     var intervalHandle;
-     var pause;
-     
-   console.log('Seconds ' +secLeft +'minutes: ');
-    
-    function countdown() {
-    begin = document.getElementById('begin').value;
-    if (begin > 0) {
-    secLeft = begin * 60; console.log(begin);
-    intervalHandle = setInterval(ticking, 1000);
-    document.getElementById('inputarea').innerHTML = '<button id="pause">Pause</button>';
-    } else {
-         document.getElementById('begin').value = '';
-        console.log(begin);
-        document.getElementById('enternumber').innerHTML= 'Please enter a valid number.';
-    }
-    }
-    function ticking() {
-     minLeft = Math.floor(secLeft /60);
-     var secOutput = secLeft - (minLeft * 60);
-       tick.innerHTML = ('0' + minLeft).substr(-2) + ':' + ('0' + secOutput).substr(-2);
-       secLeft = secLeft -1;
-       document.getElementById('inputarea').innerHTML = '<button id="pause">Pause</button>';
-       if (secLeft <= 30) {
-        tick.setAttribute("class", "colors");
+var begin,
+pause = document.getElementById('pause'),
+rest = document.getElementById('rest'),
+button = document.getElementById('button'),
+  secLeft; 
+var tick = document.getElementById('tick');
+ var intervalHandle;
+console.log('Seconds ' +secLeft +'minutes: ');
+//start countdown:
+rest.disabled = true;
+pause.disabled = true;
+function countdown() {
+begin = document.getElementById('begin').value;
+if (begin > 0) {
+secLeft = begin * 60; console.log(begin);
+rest.disabled = false;
+pause.disabled = false;
+button.disabled = true;
+document.getElementById('begin').disabled = true;
+intervalHandle = setInterval(ticking, 1000);
+} else {
+    //reset and error if NaN:
+     document.getElementById('begin').value = '';
+    console.log(begin);
+    document.getElementById('enternumber').innerHTML= 'Please enter a valid number.';
        }
-       console.log('Seconds ' + secLeft + ' minutes: ' + minLeft + ' output: ' + secOutput);
-       if (secLeft <= -1) {
-       clearInterval(intervalHandle);
-       tick.innerHTML = '00:00<br>Time is up!!';
-         }
-    document.getElementById('pause').addEventListener('click', function() {
-        clearInterval(intervalHandle);
-        
-        document.getElementById('inputarea').innerHTML = '<button id="cont">Continue</button>';
-        
-    document.getElementById('cont').addEventListener('click', function() {
-        setInterval(ticking, 1000);
-        document.getElementById('inputarea').innerHTML = '<button id="pause">Pause</button>';
-        });
-     });
+}
+
+function ticking() {
+ minLeft = Math.floor(secLeft /60);
+ var secOutput = secLeft - (minLeft * 60);
+   tick.innerHTML = ('0' + minLeft).substr(-2) + ':' + ('0' + secOutput).substr(-2);
+   secLeft = secLeft -1;
+   if (secLeft <= 29) {
+    tick.setAttribute("class", "colors");
+   }
+   console.log('Seconds ' + secLeft + ' minutes: ' + minLeft + ' output: ' + secOutput);
+   if (secLeft <= -1) {
+   clearInterval(intervalHandle);
+    rest.disabled = true;
+pause.disabled = true;
+button.disabled = false;
+document.getElementById('begin').disabled = false;
+   tick.innerHTML = '00:00<br>Time is up!!';
     }
-    button.addEventListener('click', function(){
-        countdown();
-         console.log('begin: '/*'Seconds: ' +secLeft + 'start value: ' +*/ + begin +' '/* + ' minutes: ' + minLeft*/);
-    });
-    /* if (secLeft <= 0) {
-        
-     }*/
     }
-    window.onload = totalWrap();
+       
+document.getElementById('rest').addEventListener('click', function(){
+     clearInterval(intervalHandle);
+     rest.disabled = true;
+pause.disabled = true;
+button.disabled = false;
+document.getElementById('begin').disabled = false;
+   tick.innerHTML = '00:00';
+   });
+  
+ document.getElementById('pause').addEventListener('click', function() {
+    clearInterval(intervalHandle); 
+   document.getElementById('startstop').innerHTML = '<button id="cont">Continue</button>';
+ 
+document.getElementById('cont').addEventListener('click', function() {
+    setInterval(ticking, 1000);
+    document.getElementById('startstop').innerHTML = '<button id="pause">Pause</button>';
+});
+});
+button.addEventListener('click', function(){
+    countdown();
+     console.log('begin: '/*'Seconds: ' +secLeft + 'start value: ' +*/ + begin +' '/* + ' minutes: ' + minLeft*/);
+});
 </script>
 </body>
 </html>
-
-
-

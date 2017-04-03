@@ -172,6 +172,9 @@ p {
         padding-left: 20px;
         padding-right: 20px;
     }
+    #accordion p {
+      margin: 0px 125px auto;
+    }
 #bigger {
             list-style: hebrew;
 }

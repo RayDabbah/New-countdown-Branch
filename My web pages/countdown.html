@@ -9,6 +9,11 @@
     * {
         background-color: #97D897;
     }
+    #startstop {
+        width: 65px;
+        justify-content: center;
+        display: inline-block;
+    }
     input[type=number] {
         width: 50px;
         height: 50px;
@@ -49,7 +54,7 @@
 </style>
 <body>
 <h1>Enter time and click Start to start the countdown clock.</h1>
-<div id="inputarea"><button id="button">Start</button> &nbsp <span id="startstop"><button id="pause">Pause</button><button id="cont">Continue</button></span> &nbsp
+<div id="inputarea"><button id="button">Start</button> &nbsp <div id="startstop"><button id="pause">Pause</button><button id="cont">Continue</button></div> &nbsp
 <button id="rest">Reset</button> <br><br>
 <input type="number" id="begin" min="0"><br>
 <p id="enternumber"></p></div>
@@ -69,7 +74,7 @@ console.log('Seconds ' +secLeft +'minutes: ');
 //start countdown:
 rest.disabled = true;
 pause.disabled = true;
-cont.disabled = true;
+cont.style.display = 'none';
 function countdown() {
 begin = document.getElementById('begin').value;
 if (begin > 0) {
@@ -94,7 +99,8 @@ function ticking() {
    tick.innerHTML = ('0' + minLeft).substr(-2) + ':' + ('0' + secOutput).substr(-2);
    secLeft = secLeft -1;
    if (secLeft <= 29) {
-    tick.setAttribute("class", "colors");
+    //tick.setAttribute("class", "colors");
+    tick.style.color = 'red';
    }
    console.log('Seconds ' + secLeft + ' minutes: ' + minLeft + ' output: ' + secOutput);
    if (secLeft <= -1) {
@@ -104,11 +110,13 @@ pause.disabled = true;
 button.disabled = false;
 document.getElementById('begin').disabled = false;
    tick.innerHTML = '00:00<br>Time is up!!';
+   tick.style.color = '';
     }
     }
        
 document.getElementById('rest').addEventListener('click', function(){
      clearInterval(intervalHandle);
+     tick.style.color = '';
      rest.disabled = true;
 pause.disabled = true;
 button.disabled = false;
@@ -121,14 +129,14 @@ document.getElementById('begin').disabled = false;
   clearInterval(intervalHandle);
   intervalHandle = null;
   console.log('pause int: ' + intervalHandle);
-  cont.disabled = false;
-  pause.disabled = true;
+  cont.style.display = '';
+  pause.style.display = 'none';
    });
     document.getElementById('cont').addEventListener('click', function() {
         if (intervalHandle === null) {
      intervalHandle = setInterval(ticking, 1000);  console.log('int: cont ' + intervalHandle);
-     pause.disabled = false;
-     cont.disabled = true;
+     pause.style.display = '';
+     cont.style.display = 'none';
         }
    });
 

@@ -10,26 +10,43 @@
         background-color: #97D897;
     }
     #startstop {
-        width: 65px;
-        justify-content: center;
+        /*width: 65px;*/
+        text-align: center;
         display: inline-block;
+        margin: 0 auto;
+    }
+    #rest {
+        background-color: red;
     }
     input[type=number] {
-        width: 50px;
-        height: 50px;
-        background-color: #ddd;
-        margin-left: 20%;
+        width: 100px;
+        height: 80px;
         color: #151612;
-        font-size: 2em;
+        font-size: 4em;
+        text-align: center;
+    }
+    button {
+        width: 80px;
+        height: 40px;
+        background-color: yellowgreen;
     }
     h1{
         text-align: center;
         color: #123321;
         font-size: 4em;
     }
+    #tick {
+        font-size: 6em;
+    }
+    #pause {
+        margin-left: 2px;
+        margin-right: 0px;
+        margin: auto;
+    }
     #inputarea {
         margin: auto;
-        width: 21%;
+        /*width: 40%;*/
+        text-align: center;
        /* padding: 25;*/
     }
     #enternumber {
@@ -83,6 +100,7 @@ rest.disabled = false;
 pause.disabled = false;
 button.disabled = true;
 document.getElementById('begin').disabled = true;
+tick.style.color = ''
 intervalHandle = setInterval(ticking, 1000);
 } else {
     //reset and error if NaN:
@@ -91,7 +109,9 @@ intervalHandle = setInterval(ticking, 1000);
     document.getElementById('enternumber').innerHTML= 'Please enter a valid number.';
        }
 }
-
+function tickColor () {
+    tick.style.color = ''
+}
 function ticking() {
  minLeft = Math.floor(secLeft /60);
  var secOutput = secLeft - (minLeft * 60);
@@ -110,7 +130,7 @@ pause.disabled = true;
 button.disabled = false;
 document.getElementById('begin').disabled = false;
    tick.innerHTML = '00:00<br>Time is up!!';
-   tick.style.color = '';
+  setTimeout(tickColor ,15000) ;
     }
     }
        

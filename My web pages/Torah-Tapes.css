@@ -187,6 +187,7 @@ p {
         float: left;
         border: 0px;
         width: 222px; height: 237px;
+        margin: 0px;
         margin-left: auto;
         margin-right: auto;
        /* z-index: -1;*/
@@ -364,4 +365,10 @@ table {
     }
     #trans  {
         color: transparent;
+    }
+    #error {
+        color: red;
+        font-size: .75em;
+        height: 50px;
+        text-align: center;
     }

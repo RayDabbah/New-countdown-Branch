@@ -18,7 +18,7 @@ lick.onclick = function() {
 var first= document.getElementById('first'),
 last= document.getElementById('last'),
 pass= document.getElementById('password'),
-
+rePass = document.getElementById('repassword'),
 est= document.getElementById('est');
  est.disabled = true;
 /* document.getElementById('torahform').addEventListener('submit', action);
@@ -42,10 +42,16 @@ function figure(){
       sub= document.getElementById('sub');
   var myRE=/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 var total = parseInt(cd + mp3 +flash);
-  if (first.value=== '' || last.value=== '' || pass.value === '' || email.value  === '' || myRE.test(email.value) === false || total === 0) {
+  if (first.value=== '' || last.value=== '' || pass.value === '' || email.value  === '' || myRE.test(email.value) === false || total === 0 || pass.value !== rePass.value) {
   est.disabled=true;
 } else {
   est.disabled= false;
+}
+if (pass.value !== rePass.value && rePass.value !== '') {
+  document.getElementById('error').innerHTML = 'Passwords do not match';
+}
+else {
+   document.getElementById('error').innerHTML = '';
 }
 console.log(total);
      
@@ -83,7 +89,7 @@ console.log(total);
       sub.innerHTML= 'Subtotal: $' + estimate.toFixed(2) + '<br>Tax: $' + (estimate * taxRate/10).toFixed(2) + '<br>' + (taxRate * 10).toFixed(2) + '% ' + state + '<br>Shipping: $' + shipPrice.toFixed(2);
 }
 //countdown clock
-function countdown() { var timeLeft= new Date(2017, 3).getTime()-new Date().getTime();
+function countdown() { var timeLeft= new Date(2017, 7).getTime()-new Date().getTime();
       //=parseInt(t-today, 10);
 var second=Math.floor((timeLeft/ 1000) % 60 ),
     seconds = ('0' + second).substr(-2),
@@ -111,15 +117,18 @@ reveal.addEventListener('click',hideCheckBox);
     var picture= document.getElementById('pic'),
     leftPosition = 0,
     goRight = true;
+    animateHandle = true;
     picture.style.position = 'fixed';
+    picture.style.left = '-300px';
     picture.style.top = '175px';
      
 function setPosition (left) {
  leftPosition += left;
  picture.style.left = leftPosition + 'px';
+ console.log(picture.style.left);
 }
 function animate () {
- if (leftPosition > 1000) {
+ if (leftPosition > (window.innerWidth - 400)) {
    goRight = false;
  }
  if (leftPosition < -300) {
@@ -129,9 +138,17 @@ function animate () {
  }
 var int = setInterval(animate, 15);
 picture.addEventListener('click', function() {
+  if (animateHandle === true){
   clearInterval(int);
+  animateHandle= false;
+  int = null;
+  } else if (animateHandle === false) {
+    console.log('else ' + animateHandle +'intervalHandle: '  + int);
+    animateHandle = true;
+    int = setInterval(animate, 15);
+  }
 });
-     
+ 
     
    /*var intervalHandle,
     intervalHandle2,

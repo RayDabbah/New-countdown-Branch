@@ -5,16 +5,17 @@ var pixIndex=0;
 function changeImage() {
     pix.setAttribute("src",pixa[pixIndex]);
 }   
-
+console.log('length: ' + pixa.length);
 /*for (var pixa; pixIndex <= pixa.length; pixIndex++) {
    setTimeout(changeImage,1200); console.log(pixa[pixIndex]);
 }*/
-while (pixIndex <= pixa.length) {
+while (pixIndex < (pixa.length)) {
     changeImage();
  setTimeout(changeImage,1200);
  pixIndex++;
+ console.log(pixIndex);
+console.log(pixa[pixIndex]);
 }
-//console.log(pixa[pixIndex]);
-if (pixIndex> pixa.length){
+if (pixIndex === 9){
     pixIndex=0;
 }

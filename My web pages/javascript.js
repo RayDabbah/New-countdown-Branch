@@ -67,6 +67,19 @@ pix.onclick = function () {
   };
   
 //console.log(pixa[pixIndex]);
+var uploadFile = document.getElementById('upload'),
+error = document.getElementById('error'),
+myRE =  /^.+(.wav|.WAV|.mp3|.MP3)$/;
+error.style.display = 'none';
+uploadFile.addEventListener('change', mp3);
+function mp3() {
+  if /*(myRE.test(uploadFile) === false)*/(!uploadFile.files[0].type.match('audio.*')) {
+    uploadFile.value = '';
+    error.style.display = '';
+  } else {
+    error.style.display = 'none';
+  } 
+}
 
 var feet= document.getElementById("bigger");
 var im= document.createElement("img");
